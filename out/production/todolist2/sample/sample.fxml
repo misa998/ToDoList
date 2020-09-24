@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem onAction="#showNewItemDialog" text="New..." />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" />
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox spacing="6.0">
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip><Tooltip text="Add a new Todo item" /></tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@icons8-plus-20.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="editB" onAction="#showEditItemDialog">
+                        <tooltip><Tooltip text="Edit an item" /></tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@icons8-edit-20.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton fx:id="filterToggleButton" onAction="#handleFilterButton" text="Today's items">
+                        <tooltip>
+                            <Tooltip text="Button down: show today's items only. Button up: show all items" />
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            <ComboBox prefWidth="150.0" />
+            <ChoiceBox prefWidth="150.0" />
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="textArea" wrapText="true" VBox.vgrow="ALWAYS" />
+            <HBox>
+                <Label style="-fx-background-color: white" text="Due: ">
+                    <font>
+                        <Font name="Times New Roman bold" size="14" />
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="14" />
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
